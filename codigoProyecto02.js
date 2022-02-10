@@ -3,10 +3,6 @@ localStorage.setItem('linea', 0)
 
 
 function agregarRenglones() {
-    let index = localStorage.getItem('linea')
-    index = parseInt(index)
-    index = index + 1
-
     let NameA = document.getElementById("NameA").value
     let FirstName = document.getElementById("FirstName").value
     let LastName = document.getElementById("LastName").value
@@ -31,6 +27,10 @@ function agregarRenglones() {
     }else if (Tel.length < 10) {
         alert ('<< El número telefónico debe ser de 10 dígitos >>')
     }else {
+
+        let index = localStorage.getItem('linea')
+        index = parseInt(index)
+        index = index + 1
 
         let renglones = document.getElementById("renglones")
 
@@ -64,7 +64,7 @@ function agregarRenglones() {
 
         let boton1 = document.createElement("td")
         let botonEditar = document.createElement('button')
-        botonEditar.className = "boton-3"
+        botonEditar.className = "boton-Editar"
         botonEditar.type = 'submit'
         botonEditar.addEventListener('click', editarRenglon, false)
         botonEditar.innerText = 'Editar'
@@ -72,7 +72,7 @@ function agregarRenglones() {
 
         let boton2 = document.createElement("td")
         let botonEliminar = document.createElement('button')
-        botonEliminar.className = "boton-2"
+        botonEliminar.className = "boton-Eliminar"
         botonEliminar.type = 'submit'
         botonEliminar.setAttribute('onclick', 'eliminarRenglon(this)')
         botonEliminar.innerText = 'Eliminar'
@@ -87,11 +87,11 @@ function agregarRenglones() {
 
         renglones.appendChild(fila)
 
-        //console.log(renglones)
-
         limpiarCampos()
 
         localStorage.setItem('linea', index)
+
+        mostrarTabla()
     }
 }
 
@@ -99,15 +99,12 @@ function editarRenglon() {
     mostrarActualiza()
 
     let editCampos = $(this).parents("tr").attr('id')
-    localStorage.setItem('renEditado', editCampos)
-
     let editNameA = $(this).parents('tr').find('td')[0].innerHTML
     let editCorreo = $(this).parents('tr').find('td')[1].innerHTML
     let editCargo = $(this).parents('tr').find('td')[2].innerHTML
     let editTel = $(this).parents('tr').find('td')[3].innerHTML
 
     let separaName = editNameA.split(' ')
-    console.log(separaName)
     editNameA = separaName [0]
     let editFirstName = separaName[1]
     let editLastName = separaName[2]
@@ -118,12 +115,8 @@ function editarRenglon() {
     document.getElementById("Correo").value = editCorreo
     document.getElementById("Cargo").value = editCargo
     document.getElementById("Tel").value = editTel
-}
 
-function eliminarRenglon(i) {
-    if (confirm('Eliminar registro ?') == true) {
-        $(i).closest("tr").remove()
-    } else {}
+    localStorage.setItem("renEditado", editCampos)
 }
 
 function actualizarDatos() {
@@ -167,12 +160,22 @@ function actualizarDatos() {
     }
 }
 
-function NoActualizarDatos() {
-    let indice = localStorage.getItem('renEditado')
-    if(indice == null || indice == "") {
-        return
-    }
+function eliminarRenglon(i) {
+    let index = localStorage.getItem('linea')
+    if (confirm('Eliminar registro ?') == true) {
+        $(i).closest("tr").remove()
+        index = parseInt(index)
+        index = index - 1
+        localStorage.setItem('linea', index)
+        // localStorage.setItem('renEditado', $(this).parents("tr").attr('id'))
+    } else {}
 
+    ocultarTabla()
+}
+
+function NoActualizarDatos() {
+    localStorage.getItem('renEditado')
+    
     limpiarCampos()
 
     localStorage.setItem('renEditado', '')
@@ -183,20 +186,35 @@ function NoActualizarDatos() {
 function mostrarActualiza() {
     document.getElementById("botonActualiza").className = "muestra-Actualiza"
     document.getElementById("botonAgrega").className = "oculta-botonAgrega"
+    document.getElementById("botonNoActualizar").className = "muestra-NoActualizar"
+    
 }
 
 function ocultarActualiza() {
     document.getElementById("botonActualiza").className = "boton-Actualiza"
-    document.getElementById("botonAgrega").className = "boton-1"
+    document.getElementById("botonAgrega").className = "boton-Agregar"
+    document.getElementById("botonNoActualizar").className = "boton-NoActualizar"
 }
 
 function limpiarCampos() {
-    document.getElementById("NameA").value = ""
-    document.getElementById("FirstName").value = ""
-    document.getElementById("LastName").value = ""
-    document.getElementById("Correo").value = ""
-    document.getElementById("Cargo").value = ""
+//     document.getElementById("NameA").value = ""
+//     document.getElementById("FirstName").value = ""
+//     document.getElementById("LastName").value = ""
+//     document.getElementById("Correo").value = ""
+//     document.getElementById("Cargo").value = ""
     document.getElementById("Tel").value = ""
 }
 
-function NoActualizarDatos
+function mostrarTabla() {
+    document.getElementById("tabla").className = "muestra-Tabla"
+    document.getElementById("msjInicial").className = "ocultar-msjCamposVacios"
+}
+
+function ocultarTabla() {
+    let index = localStorage.getItem('linea')
+    index = parseInt(index)
+    if(index === 0) {
+        document.getElementById("tabla").className = "tabla-Datos"
+        document.getElementById("msjInicial").className = "msjCamposVacios"
+    }
+}

@@ -19,8 +19,10 @@
 
 <body>
     <section class="titulo">
-        <h1 class="tituloH1">Captura los datos que se solicitan a continuación</h1>
-        <p class="parrafo">* Campos obligatorios</p>
+        <div>
+            <h1 class="tituloH1">Captura los datos que se solicitan a continuación</h1>
+            <p class="parrafo">* Campos obligatorios</p>
+        </div>
     </section>
 
     <section class="campos">
@@ -65,28 +67,30 @@
                     <input id="Tel" name="datos-telefono" required="required" type="tel" minlength="10" maxlength="10" placeholder="Ingresa teléfono a 10 dígitos"></input>
                 </form>
             </div>
-            <div class="div-Comentarios">
+            <!-- <div class="div-Comentarios">
                 <h3 class="h3-Comentarios">* Comentario(s)</h3>
                 <form class="form-campos" action="">
                     <label for = "coments"></label>
                     <textarea autocorrect=on name="comentarios" rows="5" cols="58" placeholder="Ingresa tu(s) comentario(s)"></textarea>
                 </form>
-            </div>
+            </div> -->
+            <div>
                 <section class="botonCampos">
-                    <button id="botonAgrega" class="boton-1" type="submit" onclick="agregarRenglones()">Agregar registro</button>
+                    <button id="botonAgrega" class="boton-Agregar" type="submit" onclick="agregarRenglones()">Agregar registro</button>
                     <button id="botonActualiza" class="boton-Actualiza" type="submit" onclick="actualizarDatos()">Actualizar registro</button>
                     <button id="botonNoActualizar" class="boton-NoActualizar" type="submit" onclick="NoActualizarDatos()">No actualizar</button>
                     <button id="botonLimpiaCampos" class="boton-Limpiar" type="submit" onclick="limpiarCampos()">Limpiar Campos</button>
                 </section>
             </div>
-            <div class="camposVacios">
+            <div id="msjInicial" class="msjCamposVacios">
                 <div>
                     <img class="imgCamposVacios" src="Info.png" alt="">
                 </div>
-                <div>
-                    <p>Aún no se han capturado datos</p>
+                <div class="tablaVacia">
+                    <p>No se han capturado datos</p>
                 </div>
             </div>
+        </div>
     </section>
 
     <section class="edicion">
@@ -96,7 +100,7 @@
         </div>
     </section>
         
-    <section class="tabla-Datos">
+    <section id="tabla" class="tabla-Datos">
         <div>
             <table>
                 <thead id="encabezados">
@@ -117,6 +121,14 @@
     <script src="codigoProyecto02.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
+
+<footer class="section-footer">
+    <div>
+        <section><hr class="linea"></hr></section>
+        <p class="p-footer">© 2022 U Camp. Todos los derechos reservados. Página interactiva para fines académicos.</p>
+    </div>
+</footer>
+
 </html>
 
 <!-- https://www.w3schools.com/jsref/dom_obj_event.asp -->
