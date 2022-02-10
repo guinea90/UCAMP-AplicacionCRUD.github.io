@@ -66,11 +66,12 @@ body {
 .parrafo {
     text-align: center;
     color: blue;
-    padding-bottom: 150px;
+    padding-bottom: 50px;
 }
 
 .div-Nombre {
     justify-items: center;
+    padding-left: 50px;
 }
 
 .tituloMail {

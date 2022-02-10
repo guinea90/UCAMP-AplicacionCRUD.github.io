@@ -97,6 +97,7 @@ function agregarRenglones() {
 
 function editarRenglon() {
     mostrarActualiza()
+    deshabilitaEliminar(1)
 
     let editCampos = $(this).parents("tr").attr('id')
     let editNameA = $(this).parents('tr').find('td')[0].innerHTML
@@ -152,34 +153,27 @@ function actualizarDatos() {
     document.getElementById(indCargo).innerHTML = document.getElementById("Cargo").value
     document.getElementById(indTel).innerHTML = document.getElementById("Tel").value
     
-        limpiarCampos()
-
-        localStorage.setItem('renEditado', '')
-
-        ocultarActualiza()
-    }
-}
-
-function eliminarRenglon(i) {
-    let index = localStorage.getItem('linea')
-    if (confirm('Eliminar registro ?') == true) {
-        $(i).closest("tr").remove()
-        index = parseInt(index)
-        index = index - 1
-        localStorage.setItem('linea', index)
-        // localStorage.setItem('renEditado', $(this).parents("tr").attr('id'))
-    } else {}
-
-    ocultarTabla()
-}
-
-function NoActualizarDatos() {
-    localStorage.getItem('renEditado')
-    
     limpiarCampos()
 
     localStorage.setItem('renEditado', '')
 
+    ocultarActualiza()
+    deshabilitaEliminar(2)
+    }
+}
+
+function eliminarRenglon(i) {
+    if (confirm('Eliminar registro ?') == true) {
+        $(i).closest("tr").remove()
+    } else {}
+    ocultarTabla()
+}
+
+function NoActualizarDatos() {
+    deshabilitaEliminar(2)
+    localStorage.getItem('renEditado')
+        limpiarCampos()
+    localStorage.setItem('renEditado', '')
     ocultarActualiza()
 }
 
@@ -211,10 +205,26 @@ function mostrarTabla() {
 }
 
 function ocultarTabla() {
-    let index = localStorage.getItem('linea')
-    index = parseInt(index)
-    if(index === 0) {
+    let renglones = document.getElementsByClassName("fila")
+    if(renglones.length === 0) {
         document.getElementById("tabla").className = "tabla-Datos"
         document.getElementById("msjInicial").className = "msjCamposVacios"
+    }
+}
+
+function deshabilitaEliminar(accion) {
+    if(accion==1){
+        let ren = document.getElementsByClassName("boton-Eliminar")
+        for(let i = 0; i<ren.length; i++) {
+            ren[i].disabled = true
+            ren[i].innerHTML = "********"
+        }
+    }
+    if(accion==2){
+        let ren = document.getElementsByClassName("boton-Eliminar")
+        for(let i = 0; i<ren.length; i++) {
+            ren[i].disabled = false
+            ren[i].innerHTML = "Eliminar"
+        }
     }
 }
