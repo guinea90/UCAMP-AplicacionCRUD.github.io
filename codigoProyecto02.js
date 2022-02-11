@@ -191,11 +191,11 @@ function ocultarActualiza() {
 }
 
 function limpiarCampos() {
-//     document.getElementById("NameA").value = ""
-//     document.getElementById("FirstName").value = ""
-//     document.getElementById("LastName").value = ""
-//     document.getElementById("Correo").value = ""
-//     document.getElementById("Cargo").value = ""
+    document.getElementById("NameA").value = ""
+    document.getElementById("FirstName").value = ""
+    document.getElementById("LastName").value = ""
+    document.getElementById("Correo").value = ""
+    document.getElementById("Cargo").value = ""
     document.getElementById("Tel").value = ""
 }
 
