@@ -25,70 +25,84 @@
         </div>
     </section>
 
-    <section class="campos">
-        <div class="div-Campos">
-            <div class="div-Nombre">
-                <h3 class="nombre">* Nombre(s)</h3>
-                <form class="form-campos" action="">                    
-                    <label></label>
-                    <input id="NameA" name="nombres" required="required" type="text" placeholder="Ingresa tu(s) nombre(s)"></input>
-                </form>
-            </div>
-            <div class="div-Apellidos">
-                <h3 class="apellidoPaterno">* Apellido Paterno</h3>
-                <form class="form-campos" action="">                    
-                    <label></label>
-                    <input id="FirstName" name="apellido-Paterno" required="required" type="text" placeholder="Ingresa tu apellido Paterno"></input>
-                </form>
-                <h3 class="apellidoMaterno">* Apellido Materno</h3>
-                <form class="form-campos" action="">                    
-                    <label></label>
-                    <input id="LastName" name="apellido-Materno" required="required" type="text" placeholder="Ingresa tu apellido Materno"></input>
-                </form>
-            </div>
-            <div class="div-Mail">
-                <h3 class="tituloMail">* Correo electrónico</h3>
-                <form class="form-campos" action="">
-                    <label for="mail"></label>
-                    <input id="Correo" name="email" required="required" type="email" placeholder="Ingresa tu correo"></div>
-                </form>
-            </div>
-            <div class="div-Puesto">
-                <h3 class="puesto">* Nombre del Puesto</h3>
-                <form class="form-campos" action="">                    
-                    <label></label>
-                    <input id="Cargo" name="nombre-Puesto" required="required" type="text" placeholder="Ingresa el nombre de puesto"></input>
-                </form>
-            </div>
-            <div class="div-Telefono">
-                <h3 class="telefono">* Teléfono</h3>
-                <form class="form-campos" action="">                    
-                    <label></label>
-                    <input id="Tel" name="datos-telefono" required="required" type="tel" minlength="10" maxlength="10" placeholder="Ingresa teléfono a 10 dígitos"></input>
-                </form>
-            </div>
-            <!-- <div class="div-Comentarios">
-                <h3 class="h3-Comentarios">* Comentario(s)</h3>
-                <form class="form-campos" action="">
-                    <label for = "coments"></label>
-                    <textarea autocorrect=on name="comentarios" rows="5" cols="58" placeholder="Ingresa tu(s) comentario(s)"></textarea>
-                </form>
-            </div> -->
-            <div>
-                <section class="botonCampos">
-                    <button id="botonAgrega" class="boton-Agregar" type="submit" onclick="agregarRenglones()">Agregar registro</button>
+    <section class="Campos">
+        <div class="div-Nombre">
+            <h3 class="nombre">* Nombre(s)</h3>
+            <form class="form-campos" action="">                    
+                <label></label>
+                <input id="NameA" name="nombres" required="required" type="text" placeholder="Ingresa tu(s) nombre(s)"></input>
+            </form>
+        </div>
+        <div class="div-apPaterno">
+            <h3 class="apellidoPaterno">* Apellido Paterno</h3>
+            <form class="form-campos" action="">                    
+                <label></label>
+                <input id="FirstName" name="apellido-Paterno" required="required" type="text" placeholder="Ingresa tu apellido Paterno"></input>
+            </form>
+        </div>
+        <div class="div-apMaterno">
+            <h3 class="apellidoMaterno">* Apellido Materno</h3>
+            <form class="form-campos" action="">                    
+                <label></label>
+                <input id="LastName" name="apellido-Materno" required="required" type="text" placeholder="Ingresa tu apellido Materno"></input>
+            </form>
+        </div>
+        <div class="div-Mail">
+            <h3 class="tituloMail">* Correo electrónico</h3>
+            <form class="form-campos" action="">
+                <label for="mail"></label>
+                <input id="Correo" name="email" required="required" type="email" placeholder="Ingresa tu correo"></div>
+            </form>
+        </div>
+        <div class="div-Puesto">
+            <h3 class="puesto">* Nombre del Puesto</h3>
+            <form class="form-campos" action="">                    
+                <label></label>
+                <input id="Cargo" name="nombre-Puesto" required="required" type="text" placeholder="Ingresa el nombre de puesto"></input>
+            </form>
+        </div>
+        <div class="div-Telefono">
+            <h3 class="telefono">* Teléfono</h3>
+            <form class="form-campos" action="">                    
+                <label></label>
+                <input id="Tel" name="datos-telefono" required="required" type="tel" minlength="10" maxlength="10" placeholder="Ingresa teléfono a 10 dígitos"></input>
+            </form>
+        </div>
+        <!-- <div class="div-Comentarios">
+            <h3 class="h3-Comentarios">* Comentario(s)</h3>
+            <form class="form-campos" action="">
+                <label for = "coments"></label>
+                <textarea autocorrect=on name="comentarios" rows="5" cols="58" placeholder="Ingresa tu(s) comentario(s)"></textarea>
+            </form>
+        </div> -->
+    </section>
+
+    <section>
+        <div>
+            <section class="botonCampos">
+                <div class="btAgrega">
+                    <button id="botonAgrega" class="boton-Agregar" type="submit" onclick="agregarRenglones()">Agregar Registro</button>
+                </div>
+                <div class="btActualiza">
                     <button id="botonActualiza" class="boton-Actualiza" type="submit" onclick="actualizarDatos()">Actualizar registro</button>
+                </div>
+                <div class="btNoActualizar">
                     <button id="botonNoActualizar" class="boton-NoActualizar" type="submit" onclick="NoActualizarDatos()">No actualizar</button>
+                </div>
+                <div class="btLimpiarCampos">
                     <button id="botonLimpiaCampos" class="boton-Limpiar" type="submit" onclick="limpiarCampos()">Limpiar Campos</button>
-                </section>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section>
+        <div id="msjInicial" class="msjCamposVacios">
+            <div class="imgCamposVacios">
+                <img class="imgVacios" src="Info.png" alt="">
             </div>
-            <div id="msjInicial" class="msjCamposVacios">
-                <div>
-                    <img class="imgCamposVacios" src="Info.png" alt="">
-                </div>
-                <div class="tablaVacia">
-                    <p>No se han capturado datos</p>
-                </div>
+            <div class="tablaVacia">
+                <p>No se han capturado datos</p>
             </div>
         </div>
     </section>
@@ -109,6 +123,7 @@
                         <th>Correo</th>
                         <th>Puesto</th>
                         <th>Teléfono</th>
+                        <th colspan="2">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="renglones">

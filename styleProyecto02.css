@@ -55,109 +55,85 @@ body {
 .titulo {
     display: flex;
     justify-content: center;
+    padding-bottom: 50px;
+    border-color: #f44336;
 }
 
 .tituloH1 {
     text-align: center;
     padding-top: 40px;
     font-size: 40px;
+    border-color: #f44336;
 }
 
 .parrafo {
     text-align: center;
     color: blue;
-    padding-bottom: 50px;
 }
 
-.div-Nombre {
+.Campos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(80px, auto);
     justify-items: center;
-    padding-left: 50px;
 }
 
-.tituloMail {
+.div-Nombre {grid-column-start: 1;}
+
+.div-apPaterno {grid-column-start: 2;}
+
+.div-apMaterno {grid-column-start: 1;}
+
+.div-Mail {grid-column-start: 2;}
+
+.div-Puesto {grid-column-start: 1;}
+
+.div-Telefono {grid-column-start: 2;}
+
+.nombre {padding-bottom: 5px;}
+
+.apellidoPaterno {padding-bottom: 5px;}
+
+.apellidoMaterno {padding-bottom: 5px;}
+
+.tituloMail {padding-bottom: 5px;}
+
+.puesto {padding-bottom: 5px;}
+
+.telefono {padding-bottom: 5px;}
+
+/* .h3-Comentarios {
     padding-bottom: 10px;
-}
-
-.nombre {
-    padding-bottom: 10px;
-}
-
-.puesto {
-    padding-bottom: 10px;
-}
-
-.telefono {
-    padding-bottom: 10px;
-}
-
-.h3-Comentarios {
-    padding-bottom: 10px;
-}
-
-.form-campos {
-    display: flex;
-    align-items: flex-start;
-}
+} */
 
 .form-campos input {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
-    padding: 10px;
-    width: 450px;
-    margin-right: 10px;
+    padding: 5px;
+    width: 250px;
     border-radius: 5px;
 }
 
-/* .div-Campos {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+/* .div-Comentarios {
+    padding-top: 50px;
 } */
 
-.div-Mail {
-    padding-top: 50px;
-}
-
-.div-Puesto {
-    padding-top: 50px;
-}
-
-.div-Telefono {
-    padding-top: 50px;
-}
-
-.div-Comentarios {
-    padding-top: 50px;
-}
-
-.div-Apellidos {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-}
-
-.apellidoPaterno {
-    padding-right: 10px;
-}
-
-.apellidoMaterno {
-    padding-left: 50px;
-    padding-right: 10px;
-}
-
-textarea {
+/* textarea {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 0.9vw;
     padding-left: 10px;
-}
+} */
 
 .botonCampos {
-    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
     padding-bottom: 30px;
 }
+.btAgrega {padding-right: 30px;}
+.btActualiza {padding-right: 50px;}
+.btNoActualizar {padding-right: 50px;}
 
 .boton-Agregar {
     padding: 8px 10px;
@@ -247,7 +223,7 @@ textarea {
     align-items: center;
     justify-content:center;
     background-color: rgba(128, 128, 128, 0.541);
-    height: 60px;
+    height: 50px;
 }
 
 .ocultar-msjCamposVacios {
@@ -256,8 +232,19 @@ textarea {
 }
 
 .imgCamposVacios {
-    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    padding-right: 8px;
+    padding-top: 4px;
+}
+
+.imgVacios {
     width: 20px;
+}
+
+.tablaVacia {
+    display: flex;
+    align-items: center;
 }
 
 h4 {
@@ -331,19 +318,38 @@ h4 {
     visibility: visible;
 }
 
-table th {
+thead th {
     padding: 10px 100px;
-    color: #555555;
-    background-color: #f0ebebd0;
+    color: whitesmoke;
+    background-color: #0e0d0da8;
+    text-align: center;
+}
+
+tbody tr {
+    padding: 10px 100px;
+    color: black;
+    background-color: #802222d0;
     text-align: center;
 }
 
 input:valid {
-    background-color: rgba(172, 255, 47, 0.486);
+    background-color: rgba(172, 255, 47, 0.315);
 }
 
 input:invalid:required {
-    background-color: rgba(255, 0, 0, 0.459);
+    background-color: rgba(255, 0, 0, 0.274);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.096);
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+:nth-last-child(-n+2) {
+    column-span: all;
 }
 /*FIN CONFIGURACIÓN BODY*/
 

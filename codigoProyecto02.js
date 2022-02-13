@@ -1,6 +1,7 @@
-localStorage.clear()
-localStorage.setItem('linea', 0)
+// localStorage.clear()
+// localStorage.setItem('linea', 0)
 
+cargaDatos()
 
 function agregarRenglones() {
     let NameA = document.getElementById("NameA").value
@@ -87,11 +88,19 @@ function agregarRenglones() {
 
         renglones.appendChild(fila)
 
-        limpiarCampos()
-
         localStorage.setItem('linea', index)
 
+        let registro = {
+            nombre: NameA + ' ' + FirstName + ' ' + LastName,
+            correo: Correo,
+            cargo: Cargo,
+            tel: Tel
+        }
+
+        localStorage.setItem('registro' + index, JSON.stringify(registro))
+        
         mostrarTabla()
+        limpiarCampos()
     }
 }
 
@@ -153,18 +162,28 @@ function actualizarDatos() {
     document.getElementById(indCargo).innerHTML = document.getElementById("Cargo").value
     document.getElementById(indTel).innerHTML = document.getElementById("Tel").value
     
-    limpiarCampos()
-
     localStorage.setItem('renEditado', '')
+    
+    let registro = {
+        nombre: document.getElementById("NameA").value + " " + document.getElementById("FirstName").value + " " + document.getElementById("LastName").value,
+        correo: document.getElementById("Correo").value,
+        cargo: document.getElementById("Cargo").value,
+        tel: document.getElementById("Tel").value
+    }
 
+    localStorage.setItem('registro' + indice, JSON.stringify(registro))
+
+    limpiarCampos()
     ocultarActualiza()
     deshabilitaEliminar(2)
     }
 }
 
 function eliminarRenglon(i) {
+    let indice = $(i).closest("tr").attr('id')
     if (confirm('Eliminar registro ?') == true) {
         $(i).closest("tr").remove()
+        localStorage.removeItem('registro' + indice)
     } else {}
     ocultarTabla()
 }
@@ -191,11 +210,11 @@ function ocultarActualiza() {
 }
 
 function limpiarCampos() {
-    document.getElementById("NameA").value = ""
-    document.getElementById("FirstName").value = ""
-    document.getElementById("LastName").value = ""
-    document.getElementById("Correo").value = ""
-    document.getElementById("Cargo").value = ""
+    // document.getElementById("NameA").value = ""
+    // document.getElementById("FirstName").value = ""
+    // document.getElementById("LastName").value = ""
+    // document.getElementById("Correo").value = ""
+    // document.getElementById("Cargo").value = ""
     document.getElementById("Tel").value = ""
 }
 
@@ -225,6 +244,81 @@ function deshabilitaEliminar(accion) {
         for(let i = 0; i<ren.length; i++) {
             ren[i].disabled = false
             ren[i].innerHTML = "Eliminar"
+        }
+    }
+}
+
+function cargaDatos() {
+    let numRen = localStorage.length
+    for (let x = 0; x < localStorage.length; x++) {
+        if(localStorage.key(x).substring(8,0) === 'registro') {
+            
+            let existente = JSON.parse(localStorage.getItem(localStorage.key(x)))
+            let NameA = existente.nombre
+            let Correo = existente.correo
+            let Cargo = existente.cargo
+            let Tel = existente.tel
+            
+            let index = localStorage.key(x).replace("registro", '')
+            index = parseInt(index)
+
+            let renglones = document.getElementById("renglones")
+
+            let fila = document.createElement("tr")
+            fila.className = "fila"
+            fila.id = index
+
+            let campoName = document.createElement("td")
+            campoName.id = "NameAid" + index
+            campoName.className = "rowNameA"
+            let textoNombre = document.createTextNode(NameA)
+            campoName.appendChild(textoNombre)
+
+            let campoCorreo = document.createElement("td")
+            campoCorreo.id = "CorreoId" + index
+            campoCorreo.className = "rowCorreo"
+            let textoCorreo = document.createTextNode(Correo)
+            campoCorreo.appendChild(textoCorreo)
+
+            let campoCargo = document.createElement("td")
+            campoCargo.id = "CargoId"+ index
+            campoCargo.className = "rowCargo"
+            let textoCargo = document.createTextNode(Cargo)
+            campoCargo.appendChild(textoCargo)
+
+            let campoTel = document.createElement("td")
+            campoTel.id = "TelId" + index
+            campoTel.className = "rowTel"
+            let numTel = document.createTextNode(Tel)
+            campoTel.appendChild(numTel)
+
+            let boton1 = document.createElement("td")
+            let botonEditar = document.createElement('button')
+            botonEditar.className = "boton-Editar"
+            botonEditar.type = 'submit'
+            botonEditar.addEventListener('click', editarRenglon, false)
+            botonEditar.innerText = 'Editar'
+            boton1.appendChild(botonEditar)
+
+            let boton2 = document.createElement("td")
+            let botonEliminar = document.createElement('button')
+            botonEliminar.className = "boton-Eliminar"
+            botonEliminar.type = 'submit'
+            botonEliminar.setAttribute('onclick', 'eliminarRenglon(this)')
+            botonEliminar.innerText = 'Eliminar'
+            boton2.appendChild(botonEliminar)
+
+            fila.appendChild(campoName)
+            fila.appendChild(campoCorreo)
+            fila.appendChild(campoCargo)
+            fila.appendChild(campoTel)
+            fila.appendChild(boton1)
+            fila.appendChild(boton2)
+
+            renglones.appendChild(fila)
+                        
+            mostrarTabla()
+            limpiarCampos()
         }
     }
 }
