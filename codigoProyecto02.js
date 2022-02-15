@@ -1,7 +1,4 @@
-// localStorage.clear()
-// localStorage.setItem('linea', 0)
-
-cargaDatos()
+arranque()
 
 function agregarRenglones() {
     let NameA = document.getElementById("NameA").value
@@ -210,17 +207,18 @@ function ocultarActualiza() {
 }
 
 function limpiarCampos() {
-    // document.getElementById("NameA").value = ""
-    // document.getElementById("FirstName").value = ""
-    // document.getElementById("LastName").value = ""
-    // document.getElementById("Correo").value = ""
-    // document.getElementById("Cargo").value = ""
+    document.getElementById("NameA").value = ""
+    document.getElementById("FirstName").value = ""
+    document.getElementById("LastName").value = ""
+    document.getElementById("Correo").value = ""
+    document.getElementById("Cargo").value = ""
     document.getElementById("Tel").value = ""
 }
 
 function mostrarTabla() {
     document.getElementById("tabla").className = "muestra-Tabla"
     document.getElementById("msjInicial").className = "ocultar-msjCamposVacios"
+    document.getElementById("secEdicion").className = "muestraEdicion"
 }
 
 function ocultarTabla() {
@@ -228,6 +226,7 @@ function ocultarTabla() {
     if(renglones.length === 0) {
         document.getElementById("tabla").className = "tabla-Datos"
         document.getElementById("msjInicial").className = "msjCamposVacios"
+        document.getElementById("secEdicion").className = "edicionOculta"
     }
 }
 
@@ -249,7 +248,6 @@ function deshabilitaEliminar(accion) {
 }
 
 function cargaDatos() {
-    let numRen = localStorage.length
     for (let x = 0; x < localStorage.length; x++) {
         if(localStorage.key(x).substring(8,0) === 'registro') {
             
@@ -321,4 +319,10 @@ function cargaDatos() {
             limpiarCampos()
         }
     }
+}
+
+function arranque() {
+    if(localStorage.getItem("linea") === null) {
+        localStorage.setItem('linea', 0)
+    } else cargaDatos()
 }
