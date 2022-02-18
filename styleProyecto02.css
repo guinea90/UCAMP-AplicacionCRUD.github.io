@@ -90,10 +90,6 @@ body {
     padding-bottom: 5px;
 }
 
-/* .h3-Comentarios {
-    padding-bottom: 10px;
-} */
-
 .form-campos input {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
@@ -101,6 +97,10 @@ body {
     width: 250px;
     border-radius: 5px;
 }
+
+/* .h3-Comentarios {
+    padding-bottom: 10px;
+} */
 
 /* .div-Comentarios {
     padding-top: 50px;
@@ -316,18 +316,24 @@ h4 {
     visibility: hidden;
 }
 
+table {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 .muestra-Tabla {
     display: flex;
     justify-content: center;
     padding-bottom: 20px;
     visibility: visible;
+    border-collapse: separate;
     overflow: auto;
     overflow-x: auto;
     overflow-y: scroll;
 }
 
 thead th {
-    padding: 5px 80px;
+    padding: 5px 30px;
     color: whitesmoke;
     background-color:  #363945;
     text-align: center;
@@ -337,7 +343,7 @@ thead th {
 }
 
 tbody tr {
-    padding: 10px 100px;
+    padding: 10px 30px;
     color: black;
     text-align: center;
     align-items: center;
@@ -359,14 +365,6 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: white;
 }
-
-/* tr:nth-last-child(-n+1) {
-    background-color: #f44336;
-}
-
-td:nth-last-child(-n+1) {
-    background-color: #f44336;
-} */
 /*FIN CONFIGURACIÓN BODY*/
 
 /*INICIO CONFIGURACIÓN FOOTER*/
@@ -396,6 +394,10 @@ td:nth-last-child(-n+1) {
     border-radius: 0.2px;
 }
 /*INICIO CONFIGURACIÓN FOOTER*/
+
+
+
+
 
 @media screen and (max-width: 768px) {
     body {
@@ -439,7 +441,7 @@ td:nth-last-child(-n+1) {
     
     .Campos {
         grid-gap: 6px;
-        grid-auto-rows: minmax(8vh, auto);
+        grid-auto-rows: minmax(40px, auto);
         font-size: 1.8vw;
     }
     
@@ -455,10 +457,6 @@ td:nth-last-child(-n+1) {
         padding-bottom: 3px;
     }
     
-    /* .h3-Comentarios {
-        padding-bottom: 10px;
-    } */
-    
     .form-campos input {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 1.8vw;
@@ -466,16 +464,6 @@ td:nth-last-child(-n+1) {
         width: 180px;
         border-radius: 5px;
     }
-    
-    /* .div-Comentarios {
-        padding-top: 50px;
-    } */
-    
-    /* textarea {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 0.9vw;
-        padding-left: 10px;
-    } */
     
     .botonCampos {
         padding-top: 15px;
@@ -553,24 +541,23 @@ td:nth-last-child(-n+1) {
     }
     
     .muestra-Tabla {
-        display: flex;
         justify-content: center;
         padding-bottom: 20px;
         visibility: visible;
     }
-    
-    thead th {
-        padding: 5px 80px;
-        color: whitesmoke;
-        background-color:  #363945;
-        text-align: center;
-        width: min-content;
-        justify-content: center;
-        font-size: 16px;
+
+    table {
+        padding-left: 100px;
+        padding-right: 0px;
     }
     
+    thead th {
+        padding: 5px 10px;
+        font-size: 2vw;
+    }
+
     tbody tr {
-        padding: 10px 100px;
+        padding: 5px 10px;
         color: black;
         text-align: center;
         justify-content: center;
